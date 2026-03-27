@@ -1,0 +1,12 @@
+Scanning ../test/input02
+[TOK_DETECT] [1:5] Type: intlit Value: 13
+[TOK_DETECT] [1:4] Type: - Value: 
+[TOK_DETECT] [1:6] Type: intlit Value: 6
+[TOK_DETECT] [1:5] Type: + Value: 
+[TOK_DETECT] [1:9] Type: intlit Value: 4
+[TOK_DETECT] [1:8] Type: * Value: 
+[TOK_DETECT] [3:9] Type: intlit Value: 5
+[TOK_DETECT] [3:8] Type: + Value: 
+[TOK_DETECT] [4:6] Type: intlit Value: 8
+[TOK_DETECT] [4:5] Type: / Value: 
+[TOK_DETECT] [5:1] Type: intlit Value: 3

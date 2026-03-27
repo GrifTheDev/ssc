@@ -1,0 +1,1 @@
+I wanted to get into compilers, so I did. I'm going to be following along to write a compiler for a subset of the C programming language. The guide I am following is https://github.com/DoctorWkt/acwj.
