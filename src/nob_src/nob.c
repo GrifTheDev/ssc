@@ -12,8 +12,9 @@ int main(int argc, char** argv) {
 
     Nob_Cmd cmd = {0};
 
-    nob_cmd_append(&cmd, "cc", SOURCE_FOLDER"main.c", "-o", BUILD_FOLDER"ssc");
-    nob_cmd_append(&cmd, "-Wextra", "-Wall", "-ggdb");
+    nob_cmd_append(&cmd, "cc", SOURCE_FOLDER"main.c", SOURCE_FOLDER"utils.c", SOURCE_FOLDER"lexer.c");
+    nob_cmd_append(&cmd, "-o", BUILD_FOLDER"ssc");
+    nob_cmd_append(&cmd, "-Wextra", "-Wall");
 
     #ifdef DEV
         nob_cmd_append(&cmd, "-ggdb");

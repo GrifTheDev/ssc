@@ -9,7 +9,7 @@
 #define extern_ extern
 #endif // extern_
 
-extern_ int line_number = 1;
-extern_ int col_number = 1;
-extern_ int putback = 0;
+extern_ int line_number;
+extern_ int col_number;
+extern_ int putback;
 extern_ FILE *input_file;
