@@ -1,0 +1,13 @@
+#
+# From: https://github.com/DoctorWkt/acwj/tree/master/02_Parser#bnf-backus-naur-form
+#
+
+expression: number
+          | expression '*' expression
+          | expression '/' expression
+          | expression '+' expression
+          | expression '-' expression
+          ;
+
+number:  T_INTLIT
+         ;
