@@ -8,6 +8,6 @@
 int read_next_valid_c();
 int read_token(Token *token);
 int scan_intlit(int starting_c); */
-void scan_file();
+void lexer_next_token();
 
 #endif // LEXER_H

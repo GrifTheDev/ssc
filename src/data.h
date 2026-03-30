@@ -11,5 +11,8 @@
 
 extern_ int line_number;
 extern_ int col_number;
+
 extern_ int putback;
 extern_ FILE *input_file;
+
+extern_ Token current_token;

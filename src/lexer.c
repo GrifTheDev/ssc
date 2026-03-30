@@ -68,13 +68,15 @@ static int read_token(Token *token) {
         token->token_type = T_DIV;
         break;
     case EOF:
+        token->token_type = T_EOF;
         return 0;
     default:
         if (is_digit(character)) {
             token->token_type = T_INTLIT;
             token->value = scan_intlit(character);
         } else {
-            printf("Error on line %d, invalid token", line_number);
+            printf("[ERR] %d, invalid token\n", line_number);
+            exit(1);
         }
 
         break;
@@ -83,16 +85,14 @@ static int read_token(Token *token) {
     return 1;
 }
 
-void scan_file() {
-    Token current_tok;
+// Retrieves the next token and sets in the global variable current_token
+void lexer_next_token() {
+    char *tok_lookup[] = { "+", "-", "*", "/", "intlit", "EOF"};
 
-    char *tok_lookup[] = { "+", "-", "*", "/", "intlit"};
-
-    while(read_token(&current_tok)) {
-        if (current_tok.token_type == T_INTLIT) {
-            printf("[TOK_DETECT] [%d:%d] Type: %s Value: %d\n", line_number, col_number, tok_lookup[current_tok.token_type], current_tok.value);
-        } else {
-            printf("[TOK_DETECT] [%d:%d] Type: %s Value: %c\n", line_number, col_number, tok_lookup[current_tok.token_type], current_tok.value);
-        }
+    read_token(&current_token);
+    if (current_token.token_type == T_INTLIT) {
+        printf("[TOK_DETECT] [%d:%d] Type: %s Value: %d\n", line_number, col_number, tok_lookup[current_token.token_type], current_token.value);
+    } else {
+        printf("[TOK_DETECT] [%d:%d] Type: %s Value: %c\n", line_number, col_number, tok_lookup[current_token.token_type], current_token.value);
     }
 }
