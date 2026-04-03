@@ -15,15 +15,15 @@ void init() {
 
 int main(int argc, char **argv) {
     if (argc < 2) {
-        printf("[ERR] No input provided\n\n");
-        printf("[ERR] Usage: ssc main\n");
+        ssc_message(SSC_ERROR, "No input file provided\n\nUsage ssc ./main.c\n", "");
         return 1;
     }
     init();
     input_file = fopen(argv[1], "r");
 
     printf("Scanning %s\n", argv[1]);
-    AST_node *ast = parser_bin_exp();
+    lexer_next_token();
+    AST_node *ast = parser_bin_exp(0);
     int final_res = interpret_AST(ast);
     printf("final result of ast interpretation for %s: %d\n", argv[1], final_res);
     

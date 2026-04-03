@@ -1,9 +1,9 @@
 #define NOB_IMPLEMENTATION
 #include "nob.h"
+#include "../data.h"
 
 #define BUILD_FOLDER "./"
 #define SOURCE_FOLDER "./"
-#define DEV
 
 int main(int argc, char** argv) {
     NOB_GO_REBUILD_URSELF(argc, argv);

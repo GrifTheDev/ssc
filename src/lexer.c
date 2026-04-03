@@ -75,8 +75,7 @@ static int read_token(Token *token) {
             token->token_type = T_INTLIT;
             token->value = scan_intlit(character);
         } else {
-            printf("[ERR] %d, invalid token\n", line_number);
-            exit(1);
+            ssc_message(SSC_ERROR, "%d:%d | Invalid token detected\n", line_number, col_number);
         }
 
         break;
@@ -87,12 +86,16 @@ static int read_token(Token *token) {
 
 // Retrieves the next token and sets in the global variable current_token
 void lexer_next_token() {
-    char *tok_lookup[] = { "+", "-", "*", "/", "intlit", "EOF"};
+    char *tok_lookup[] = { "EOF", "+", "-", "*", "/", "intlit"};
 
     read_token(&current_token);
-    if (current_token.token_type == T_INTLIT) {
-        printf("[TOK_DETECT] [%d:%d] Type: %s Value: %d\n", line_number, col_number, tok_lookup[current_token.token_type], current_token.value);
-    } else {
-        printf("[TOK_DETECT] [%d:%d] Type: %s Value: %c\n", line_number, col_number, tok_lookup[current_token.token_type], current_token.value);
-    }
+
+    #ifdef DEV
+        if (current_token.token_type == T_INTLIT) {
+            ssc_message(SSC_DEBUG, "[LEX] %d:%d Type: %s Value: %d\n", line_number, col_number, tok_lookup[current_token.token_type], current_token.value);
+        } else {
+            ssc_message(SSC_DEBUG, "[LEX] %d:%d Type: %s\n", line_number, col_number, tok_lookup[current_token.token_type]);
+        }
+    #endif // DEV
+
 }

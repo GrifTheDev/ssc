@@ -5,9 +5,13 @@
     our variables get assigned, but everywhere else we import this header file the variables
     will resolve to be extern.
 */
+#include "defs.h"
+
 #ifndef extern_
 #define extern_ extern
 #endif // extern_
+
+#define DEV
 
 extern_ int line_number;
 extern_ int col_number;

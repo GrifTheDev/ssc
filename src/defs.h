@@ -3,14 +3,28 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
+
+// Pursuant to https://www.rfc-editor.org/rfc/rfc5424#section-6.2.1 Table 2
+// Labeled integers for easier integration in if/else and switch statements.
+typedef enum {
+    SSC_EMERGENCY = 0, // system is unusable
+    SSC_ALERT =     1, // action must be taken immediately
+    SSC_CRITICAL =  2, // critical conditions
+    SSC_ERROR =     3, // error conditions
+    SSC_WARNING =   4, // warning conditions
+    SSC_NOTICE =    5, // normal but significant condition
+    SSC_INFO =      6, // informational messages
+    SSC_DEBUG =     7  // debug-level messages 
+} SSC_LogLevel;
 
 typedef enum {
+    T_EOF,
     T_ADD,
     T_SUB,
     T_MULT,
     T_DIV,
     T_INTLIT,
-    T_EOF,
 } Token_t;
 
 typedef enum {
